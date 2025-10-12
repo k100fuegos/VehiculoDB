@@ -1,6 +1,6 @@
 ﻿namespace VehiculoDB
 {
-    partial class Form1
+    partial class frmPrincipal
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            btnAbrir = new Button();
+            btnCerrar = new Button();
+            SuspendLayout();
+            // 
+            // btnAbrir
+            // 
+            btnAbrir.Location = new Point(510, 70);
+            btnAbrir.Name = "btnAbrir";
+            btnAbrir.Size = new Size(75, 23);
+            btnAbrir.TabIndex = 0;
+            btnAbrir.Text = "Abrir BD";
+            btnAbrir.UseVisualStyleBackColor = true;
+            btnAbrir.Click += btnAbrir_Click;
+            // 
+            // btnCerrar
+            // 
+            btnCerrar.Location = new Point(510, 156);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(75, 23);
+            btnCerrar.TabIndex = 1;
+            btnCerrar.Text = "Cerrar BD";
+            btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.Click += btnCerrar_Click;
+            // 
+            // frmPrincipal
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnCerrar);
+            Controls.Add(btnAbrir);
+            Name = "frmPrincipal";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnAbrir;
+        private Button btnCerrar;
     }
 }
