@@ -36,7 +36,7 @@ namespace VehiculoDB.Core.Lib
             }
         }
 
-        public void Close()
+        public void CloseDB()
         {
             try
             {
