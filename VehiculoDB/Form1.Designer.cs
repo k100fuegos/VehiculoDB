@@ -30,6 +30,7 @@
         {
             btnAbrir = new Button();
             btnCerrar = new Button();
+            btnPropietaios = new Button();
             SuspendLayout();
             // 
             // btnAbrir
@@ -52,11 +53,22 @@
             btnCerrar.UseVisualStyleBackColor = true;
             btnCerrar.Click += btnCerrar_Click;
             // 
+            // btnPropietaios
+            // 
+            btnPropietaios.Location = new Point(91, 109);
+            btnPropietaios.Name = "btnPropietaios";
+            btnPropietaios.Size = new Size(187, 131);
+            btnPropietaios.TabIndex = 2;
+            btnPropietaios.Text = "Propietarios";
+            btnPropietaios.UseVisualStyleBackColor = true;
+            btnPropietaios.Click += btnPropietaios_Click;
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnPropietaios);
             Controls.Add(btnCerrar);
             Controls.Add(btnAbrir);
             Name = "frmPrincipal";
@@ -68,5 +80,6 @@
 
         private Button btnAbrir;
         private Button btnCerrar;
+        private Button btnPropietaios;
     }
 }

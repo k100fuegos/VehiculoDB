@@ -48,12 +48,13 @@ namespace VehiculoDB.Core.Dao
                 {
                     command.Parameters.Add("@f", System.Data.SqlDbType.NVarChar, 120).Value = $"%{filtro}%";
 
-                    rd = command.ExecuteReader();
+                }
 
-                    while (rd.Read())
-                    {
-                        list.Add(Map(rd)); 
-                    }
+                rd = command.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    list.Add(Map(rd));
                 }
 
             }

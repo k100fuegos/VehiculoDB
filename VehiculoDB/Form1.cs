@@ -1,4 +1,5 @@
 using VehiculoDB.Core.Lib;
+using VehiculoDB.Formularios.NewFolder.FormsPropietario;
 
 namespace VehiculoDB
 {
@@ -21,6 +22,12 @@ namespace VehiculoDB
         {
             Cnn.OpenDb();
             MessageBox.Show("Conexion Cerrada");
+        }
+
+        private void btnPropietaios_Click(object sender, EventArgs e)
+        {
+            frmPropietario form = new frmPropietario();
+            form.Show();
         }
     }
 }

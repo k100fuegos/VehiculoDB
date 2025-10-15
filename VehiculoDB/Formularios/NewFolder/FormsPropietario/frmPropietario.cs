@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using VehiculoDB.Core.Dao;
+
+namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
+{
+    public partial class frmPropietario : Form
+    {
+
+        private PropietarioDao propietarioDao = new PropietarioDao();
+
+        public frmPropietario()
+        {
+            InitializeComponent();
+        }
+
+        private void ConfiguracionGrid()
+        {
+            dgvPropietario.AutoGenerateColumns = false;
+            dgvPropietario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPropietario.MultiSelect = false;
+            dgvPropietario.Columns.Clear();
+
+            dgvPropietario.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NobreCol",
+                HeaderText = "Nombre",
+                DataPropertyName = "Nombre",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvPropietario.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ApellidoCol",
+                HeaderText = "Apellido",
+                DataPropertyName = "Apellido",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvPropietario.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "DUICol",
+                HeaderText = "DUI",
+                DataPropertyName = "DUI",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvPropietario.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "TelefonoCol",
+                HeaderText = "Telefono",
+                DataPropertyName = "Telefono",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            dgvPropietario.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "DireccionCol",
+                HeaderText = "Dirección",
+                DataPropertyName = "Direccion",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+        }
+
+        private void Cargar(string filtro = "")
+        {
+            dgvPropietario.DataSource = propietarioDao.GetAll();
+            dgvPropietario.ClearSelection();
+
+        }
+
+
+        private void frmPropietario_Load(object sender, EventArgs e)
+        {
+            ConfiguracionGrid();
+            Cargar();
+        }
+
+        private void dgvPropietario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
+}
