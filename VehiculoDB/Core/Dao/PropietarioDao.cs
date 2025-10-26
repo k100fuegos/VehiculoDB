@@ -120,7 +120,36 @@ namespace VehiculoDB.Core.Dao
 
         public bool Update(Propietario paPropietario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Con = OpenDb();
+
+                command = new SqlCommand(@"UPDATE Propietarios 
+                                           SET Nombre = @Nombre
+                                               Apellido = @Apellido
+                                               DUI = @DUI
+                                               Telefono = @Telefono
+                                               Direccion = @Direccion
+                                            WHERE IdPropietario = @id;", Con);
+
+                command.Parameters.Add("@Nombre", SqlDbType.NVarChar, 100).Value = paPropietario.Nombre;
+                command.Parameters.Add("@Apellido", SqlDbType.NVarChar, 100).Value = paPropietario.Apellido;
+                command.Parameters.Add("@DUI", SqlDbType.VarChar, 10).Value = paPropietario.DUI;
+                command.Parameters.Add("@Telefono", SqlDbType.VarChar, 15).Value = (object)paPropietario.Telefono ?? DBNull.Value;
+                command.Parameters.Add("@Direccion", SqlDbType.NVarChar, 200).Value = (object)paPropietario.Direccion ?? DBNull.Value;
+
+                return command.ExecuteNonQuery() > 0;
+
+            }
+            catch (SqlException ex)
+            {
+                throw new ApplicationException("Error inseperado: ", ex);
+            }
+            finally
+            {
+                command?.Dispose();
+                CloseDB();
+            }
         }
     }
 }
