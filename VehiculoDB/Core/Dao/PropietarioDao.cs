@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,7 +92,30 @@ namespace VehiculoDB.Core.Dao
 
         public int Insert(Propietario paPropietario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Con = OpenDb();
+                command = new SqlCommand(@"INSERT INTO Propietarios (Nombre, Apellido, DUI, Telefono, Direccion) 
+                                           OUTPUT INSERTED IdPropietario 
+                                           VALUES (@Nombre, @Apellido, @DUI, @Telefono, @Direccion);", Con);
+                command.Parameters.Add("@Nombre", SqlDbType.NVarChar, 100).Value = paPropietario.Nombre;
+                command.Parameters.Add("@Apellido", SqlDbType.NVarChar, 100).Value = paPropietario.Apellido;
+                command.Parameters.Add("@DUI", SqlDbType.VarChar, 10).Value = paPropietario.DUI;
+                command.Parameters.Add("@Telefono", SqlDbType.VarChar, 15).Value = (object?)paPropietario.Telefono ?? DBNull.Value;
+                command.Parameters.Add("@Direccion", SqlDbType.NVarChar, 200).Value = (object?)paPropietario.Direccion ?? DBNull.Value;
+
+                var id = (int)command.ExecuteScalar();
+                return id;
+            }
+            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            {
+                throw new ApplicationException("El DUI ya esta ingrezado en el sistema, Verifique la informacion");
+            }
+            finally
+            {
+                command?.Dispose();
+                CloseDB();
+            }
         }
 
         public bool Update(Propietario paPropietario)

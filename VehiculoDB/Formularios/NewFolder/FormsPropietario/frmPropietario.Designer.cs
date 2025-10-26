@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             dgvPropietario = new DataGridView();
+            btnAgregar = new Button();
+            btnEditar = new Button();
+            btnCerrar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
@@ -39,15 +42,48 @@
             dgvPropietario.Name = "dgvPropietario";
             dgvPropietario.ReadOnly = true;
             dgvPropietario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPropietario.Size = new Size(776, 218);
+            dgvPropietario.Size = new Size(776, 369);
             dgvPropietario.TabIndex = 0;
             dgvPropietario.CellContentClick += dgvPropietario_CellContentClick;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAgregar.Location = new Point(854, 12);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(253, 82);
+            btnAgregar.TabIndex = 1;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            btnEditar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditar.Location = new Point(854, 156);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(253, 82);
+            btnEditar.TabIndex = 2;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnCerrar
+            // 
+            btnCerrar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCerrar.Location = new Point(854, 299);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(253, 82);
+            btnCerrar.TabIndex = 3;
+            btnCerrar.Text = "Cerrar";
+            btnCerrar.UseVisualStyleBackColor = true;
             // 
             // frmPropietario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1146, 422);
+            Controls.Add(btnCerrar);
+            Controls.Add(btnEditar);
+            Controls.Add(btnAgregar);
             Controls.Add(dgvPropietario);
             Name = "frmPropietario";
             Text = "Propietario";
@@ -59,5 +95,8 @@
         #endregion
 
         private DataGridView dgvPropietario;
+        private Button btnAgregar;
+        private Button btnEditar;
+        private Button btnCerrar;
     }
 }
