@@ -88,5 +88,19 @@ namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
         {
 
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmPropietarioInsert frmProInsert = new frmPropietarioInsert();
+            if (frmProInsert.ShowDialog() == DialogResult.OK)
+            {
+                Cargar();
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

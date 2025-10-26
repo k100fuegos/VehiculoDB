@@ -96,7 +96,7 @@ namespace VehiculoDB.Core.Dao
             {
                 Con = OpenDb();
                 command = new SqlCommand(@"INSERT INTO Propietarios (Nombre, Apellido, DUI, Telefono, Direccion) 
-                                           OUTPUT INSERTED IdPropietario 
+                                           OUTPUT INSERTED.IdPropietario 
                                            VALUES (@Nombre, @Apellido, @DUI, @Telefono, @Direccion);", Con);
                 command.Parameters.Add("@Nombre", SqlDbType.NVarChar, 100).Value = paPropietario.Nombre;
                 command.Parameters.Add("@Apellido", SqlDbType.NVarChar, 100).Value = paPropietario.Apellido;
