@@ -128,7 +128,7 @@ namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
             {
                 MessageBox.Show("Debe seleccionar un registro");
                 return;
-            } 
+            }
             else
             {
                 MessageBox.Show("El id seleccionado es: " + id.Value);
@@ -142,6 +142,52 @@ namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
             }
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            var id = GetIdSeleccionado();
+
+            if (!id.HasValue)
+            {
+                MessageBox.Show("Debe seleccionar un registro");
+                return;
+            }
+            else
+            {
+                var respuesta = MessageBox.Show("Realmente desea eliminar el registro?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.No)
+                {
+                    return;
+                }
+
+                try
+                {
+                    if (propietarioDao.Delete(id.Value))
+                    {
+                        Cargar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("no se pudo eliminar el registro", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                catch (ApplicationException ex)
+                {
+                    MessageBox.Show("no se pudo eliminar el registro: " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error inseperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

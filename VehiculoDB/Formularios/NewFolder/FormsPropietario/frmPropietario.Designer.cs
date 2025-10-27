@@ -32,6 +32,7 @@
             btnAgregar = new Button();
             btnEditar = new Button();
             btnCerrar = new Button();
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPropietario).BeginInit();
             SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             dgvPropietario.Name = "dgvPropietario";
             dgvPropietario.ReadOnly = true;
             dgvPropietario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPropietario.Size = new Size(776, 369);
+            dgvPropietario.Size = new Size(788, 478);
             dgvPropietario.TabIndex = 0;
             dgvPropietario.CellContentClick += dgvPropietario_CellContentClick;
             // 
@@ -60,7 +61,7 @@
             // btnEditar
             // 
             btnEditar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(854, 156);
+            btnEditar.Location = new Point(854, 144);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(253, 82);
             btnEditar.TabIndex = 2;
@@ -71,7 +72,7 @@
             // btnCerrar
             // 
             btnCerrar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCerrar.Location = new Point(854, 299);
+            btnCerrar.Location = new Point(854, 408);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(253, 82);
             btnCerrar.TabIndex = 3;
@@ -79,11 +80,23 @@
             btnCerrar.UseVisualStyleBackColor = true;
             btnCerrar.Click += btnCerrar_Click;
             // 
+            // btnEliminar
+            // 
+            btnEliminar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEliminar.Location = new Point(854, 281);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(253, 82);
+            btnEliminar.TabIndex = 4;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
             // frmPropietario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1146, 422);
+            ClientSize = new Size(1148, 526);
+            Controls.Add(btnEliminar);
             Controls.Add(btnCerrar);
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
@@ -101,5 +114,6 @@
         private Button btnAgregar;
         private Button btnEditar;
         private Button btnCerrar;
+        private Button btnEliminar;
     }
 }
