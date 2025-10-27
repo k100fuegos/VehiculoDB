@@ -68,3 +68,4 @@ C:\Users\kelvi\Downloads\Tareas\Segundo periodo\DAE\Semana 11\VehiculoDB\Vehicul
 C:\Users\kelvi\Downloads\Tareas\Segundo periodo\DAE\Semana 11\VehiculoDB\VehiculoDB\obj\Debug\net8.0-windows\ref\VehiculoDB.dll
 C:\Users\kelvi\Downloads\Tareas\Segundo periodo\DAE\Semana 11\VehiculoDB\VehiculoDB\obj\Debug\net8.0-windows\VehiculoDB.Formularios.NewFolder.FormsPropietario.frmPropietario.resources
 C:\Users\kelvi\Downloads\Tareas\Segundo periodo\DAE\Semana 11\VehiculoDB\VehiculoDB\obj\Debug\net8.0-windows\VehiculoDB.Formularios.NewFolder.FormsPropietario.frmPropietarioInsert.resources
+C:\Users\kelvi\Downloads\Tareas\Segundo periodo\DAE\Semana 11\VehiculoDB\VehiculoDB\obj\Debug\net8.0-windows\VehiculoDB.Formularios.NewFolder.FormsPropietario.frmPropietarioUpdate.resources

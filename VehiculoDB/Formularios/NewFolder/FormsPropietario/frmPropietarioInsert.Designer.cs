@@ -161,7 +161,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(614, 487);
+            ClientSize = new Size(614, 486);
             Controls.Add(txtDireccion);
             Controls.Add(mtxtTelefono);
             Controls.Add(mtxtDUI);

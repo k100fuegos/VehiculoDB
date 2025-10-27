@@ -85,9 +85,34 @@ namespace VehiculoDB.Core.Dao
         }; 
 
 
-        public Propietario GetById(int idPropietario)
+        public Propietario? GetById(int idPropietario)
         {
-            throw new NotImplementedException();
+            SqlDataReader rd = null;
+
+            try
+            {
+                Con = OpenDb();
+
+                command =new SqlCommand(@"SELECT IdPropietario, Nombre, Apellido, DUI, Telefono, Direccion 
+                                       FROM Propietarios
+                                       WHERE IdPropietario = @id", Con);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = idPropietario;
+
+                rd = command.ExecuteReader(CommandBehavior.SingleRow);
+
+                if (!rd.Read())
+                {
+                    return null;
+                }
+
+                return Map(rd);
+            }
+            finally
+            {
+                rd?.Close();
+                command?.Dispose();
+                CloseDB();
+            }
         }
 
         public int Insert(Propietario paPropietario)
@@ -125,10 +150,10 @@ namespace VehiculoDB.Core.Dao
                 Con = OpenDb();
 
                 command = new SqlCommand(@"UPDATE Propietarios 
-                                           SET Nombre = @Nombre
-                                               Apellido = @Apellido
-                                               DUI = @DUI
-                                               Telefono = @Telefono
+                                           SET Nombre = @Nombre,
+                                               Apellido = @Apellido,
+                                               DUI = @DUI,
+                                               Telefono = @Telefono,
                                                Direccion = @Direccion
                                             WHERE IdPropietario = @id;", Con);
 
@@ -137,13 +162,14 @@ namespace VehiculoDB.Core.Dao
                 command.Parameters.Add("@DUI", SqlDbType.VarChar, 10).Value = paPropietario.DUI;
                 command.Parameters.Add("@Telefono", SqlDbType.VarChar, 15).Value = (object)paPropietario.Telefono ?? DBNull.Value;
                 command.Parameters.Add("@Direccion", SqlDbType.NVarChar, 200).Value = (object)paPropietario.Direccion ?? DBNull.Value;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = paPropietario.IdPropietario;
 
                 return command.ExecuteNonQuery() > 0;
 
             }
             catch (SqlException ex)
             {
-                throw new ApplicationException("Error inseperado: ", ex);
+                throw new ApplicationException("Error inseperado: " + ex);
             }
             finally
             {

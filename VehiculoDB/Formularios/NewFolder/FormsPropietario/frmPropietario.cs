@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehiculoDB.Core.Clases;
 using VehiculoDB.Core.Dao;
 
 namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
@@ -74,6 +75,7 @@ namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
         {
             dgvPropietario.DataSource = propietarioDao.GetAll();
             dgvPropietario.ClearSelection();
+            dgvPropietario.CurrentCell = null;
 
         }
 
@@ -101,6 +103,45 @@ namespace VehiculoDB.Formularios.NewFolder.FormsPropietario
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private int? GetIdSeleccionado()
+        {
+            if (dgvPropietario.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un registro", "Propietarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            if (dgvPropietario.CurrentRow.DataBoundItem is Propietario paPropietario)
+                return paPropietario.IdPropietario;
+
+            return null;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var id = GetIdSeleccionado();
+
+            if (!id.HasValue)
+            {
+                MessageBox.Show("Debe seleccionar un registro");
+                return;
+            } 
+            else
+            {
+                MessageBox.Show("El id seleccionado es: " + id.Value);
+            }
+
+            frmPropietarioUpdate frm = new frmPropietarioUpdate(id.Value);
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Cargar();
+            }
+
+
         }
     }
 }
